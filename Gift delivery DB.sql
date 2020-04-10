@@ -61,3 +61,15 @@ create table ItemOrder (
 	item_id char(4)  FOREIGN KEY REFERENCES Item,
 	PRIMARY KEY (order_no, item_id),
 )
+
+create table Payment (
+	payment_id char(4) PRIMARY KEY,
+	net_price real NOT NULL,
+	type varchar(40) CHECK (type = 'Card' OR type = 'Paypal') DEFAULT 'Card',
+	paypal_email char(30),
+	bank varchar(30),
+	card_no integer,
+	order_no char(4) FOREIGN KEY REFERENCES Orders,
+	CONSTRAINT chk_payment_id CHECK (payment_id like '[P][0-9][0-9][0-9]'),
+	CONSTRAINT chk_paypal_email CHECK (paypal_email like '%_@__%.__%'),
+)
