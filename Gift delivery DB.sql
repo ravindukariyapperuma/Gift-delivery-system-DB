@@ -73,3 +73,48 @@ create table Payment (
 	CONSTRAINT chk_payment_id CHECK (payment_id like '[P][0-9][0-9][0-9]'),
 	CONSTRAINT chk_paypal_email CHECK (paypal_email like '%_@__%.__%'),
 )
+
+
+
+
+
+
+
+
+
+
+--Data--
+Insert into Customer values('C001','Kamal','0714528247','43/ Rathnapura','kamal@gmail.com');
+Insert into Customer values('C002','Amal','0772545965','3/ Malabe','amal@yahoo.com');
+
+Insert into Vehicle values('V001','Bicycle','Honda');
+Insert into Vehicle values('V002','Van','Toyota');
+
+Insert into Employee values('E001','Nuwan','0778542395','V001');
+Insert into Employee values('E002','Kumara','0785474652','V002');
+
+Insert into Orders(order_no,deliverpersonname,street,town,house_no,customer_no,Employee_id) values('O001','Sandum','New road','Kiribathgoda', 11,'C002','E001' );
+Insert into Orders(order_no,deliverpersonname,street,town,house_no,customer_no,Employee_id) values('O002','Pawan','Wijayarama Mw','Nugegoda', 105,'C002','E002' );
+
+Insert into Category values('T001','Cake','Cake is a form of sweet food made from flour');
+Insert into Category values('T002','Flowers','A flower sometimes known as a bloom or blossom');
+
+Insert into Item values('I001','Rose Flower',25.20, 'Red or white colours available', 'T002');
+Insert into Item values('I002','Fruit Cake', 450.00,'Many kind of fruits added', 'T001');
+
+Insert into ItemOrder(amount,order_no,item_id) values(450.00,'O001','I002');
+Insert into ItemOrder values(2,50.4,'O001','I001');
+Insert into ItemOrder values(2,900.00,'O002','I002');
+
+Insert into Payment values('P001',900.00,'Card',Null,'HNB',10012,'O002');
+Insert into Payment values('P002',500.4,'Paypal','123@atels.com',Null, Null,'O001');
+
+
+SELECT * FROM  Customer
+SELECT * FROM  Vehicle
+SELECT * FROM  Employee
+SELECT * FROM Orders
+SELECT * FROM  Category
+SELECT * FROM  Item
+SELECT * FROM  ItemOrder
+SELECT * FROM  Payment
