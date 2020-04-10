@@ -44,3 +44,12 @@ create table Category (
 	description varchar(50),
 	CONSTRAINT chk_cid CHECK (cid like '[T][0-9][0-9][0-9]'),
 )
+
+create table Item (
+	item_id char(4) PRIMARY KEY,
+	name varchar(30) NOT NULL,
+	price real NOT NULL,
+	description varchar(40),
+	cid char(4) FOREIGN KEY REFERENCES Category,
+	CONSTRAINT chk_item_id CHECK (item_id like '[I][0-9][0-9][0-9]'),
+)
