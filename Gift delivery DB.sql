@@ -53,3 +53,11 @@ create table Item (
 	cid char(4) FOREIGN KEY REFERENCES Category,
 	CONSTRAINT chk_item_id CHECK (item_id like '[I][0-9][0-9][0-9]'),
 )
+
+create table ItemOrder (
+	Qty integer NOT NULL CHECK(Qty > 0) DEFAULT 1,
+	amount real NOT NULL,
+	order_no char(4) FOREIGN KEY REFERENCES Orders,
+	item_id char(4)  FOREIGN KEY REFERENCES Item,
+	PRIMARY KEY (order_no, item_id),
+)
