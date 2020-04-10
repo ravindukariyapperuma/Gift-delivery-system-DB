@@ -37,3 +37,10 @@ create table Orders (
 	Employee_id char(4) FOREIGN KEY REFERENCES Employee,
 	CONSTRAINT chk_order_no CHECK (order_no like '[O][0-9][0-9][0-9]'),
 )
+
+create table Category (
+	cid char(4) PRIMARY KEY,
+	c_name varchar(40),
+	description varchar(50),
+	CONSTRAINT chk_cid CHECK (cid like '[T][0-9][0-9][0-9]'),
+)
