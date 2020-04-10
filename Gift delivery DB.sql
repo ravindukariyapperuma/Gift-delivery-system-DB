@@ -8,3 +8,10 @@ create table Customer (
 	CONSTRAINT chk_contact_no CHECK (contact_no not like '%[^0-9]%'),
 	CONSTRAINT chk_email CHECK (email like '%_@__%.__%'),
 )
+
+create table Vehicle (
+	vehicle_no char(10) PRIMARY KEY,
+	type varchar(40),
+	vehicle_name char(40),
+	CONSTRAINT chk_vehicle_no CHECK (vehicle_no like '[V][0-9][0-9][0-9]'),
+)
