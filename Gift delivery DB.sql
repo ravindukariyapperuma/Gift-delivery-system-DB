@@ -24,3 +24,16 @@ create table Employee (
 	CONSTRAINT chk_Employee_id CHECK (Employee_id like '[E][0-9][0-9][0-9]'),
 	CONSTRAINT chk_contact_no_emp CHECK (contact_no not like '%[^0-9]%'),
 )
+
+create table Orders (
+	order_no char(4) PRIMARY KEY,
+	deliverpersonname varchar(40) NOT NULL,
+	street varchar(40) NOT NULL,
+	town varchar(40) NOT NULL,
+	house_no integer NOT NULL,
+	order_date_time datetime DEFAULT getdate(),
+	deliver_date_time datetime,
+	customer_no char(4) FOREIGN KEY REFERENCES Customer,
+	Employee_id char(4) FOREIGN KEY REFERENCES Employee,
+	CONSTRAINT chk_order_no CHECK (order_no like '[O][0-9][0-9][0-9]'),
+)
